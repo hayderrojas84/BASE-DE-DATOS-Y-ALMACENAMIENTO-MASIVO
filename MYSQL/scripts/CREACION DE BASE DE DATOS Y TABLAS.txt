@@ -1,0 +1,41 @@
+-- Crear base de datos
+CREATE DATABASE Libreria;
+
+-- Usar la base de datos
+USE Libreria;
+
+-- Crear tabla Autores
+CREATE TABLE Autores (
+    id_autor INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    nacionalidad VARCHAR(50)
+);
+
+-- Crear tabla Libros
+CREATE TABLE Libros (
+    id_libro INT PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(200) NOT NULL,
+    genero VARCHAR(100),
+    precio DECIMAL(10,2),
+    id_autor INT,
+    FOREIGN KEY (id_autor) REFERENCES Autores(id_autor)
+);
+
+-- Crear tabla Clientes
+CREATE TABLE Clientes (
+    id_cliente INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) UNIQUE
+);
+
+-- Crear tabla Pedidos
+CREATE TABLE Pedidos (
+    id_pedido INT PRIMARY KEY AUTO_INCREMENT,
+    id_cliente INT,
+    id_libro INT,
+    fecha_pedido DATE,
+    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente),
+    FOREIGN KEY (id_libro) REFERENCES Libros(id_libro)
+);
