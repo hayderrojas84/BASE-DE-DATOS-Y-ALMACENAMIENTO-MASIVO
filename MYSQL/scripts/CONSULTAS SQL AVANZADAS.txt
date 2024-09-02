@@ -1,0 +1,15 @@
+-- Consultar todos los libros con el nombre del autor
+SELECT Libros.titulo, Autores.nombre, Autores.apellido 
+FROM Libros 
+INNER JOIN Autores ON Libros.id_autor = Autores.id_autor;
+
+-- Consultar todos los pedidos realizados por un cliente específico
+SELECT Pedidos.id_pedido, Clientes.nombre, Clientes.apellido, Libros.titulo, Pedidos.fecha_pedido 
+FROM Pedidos
+INNER JOIN Clientes ON Pedidos.id_cliente = Clientes.id_cliente
+INNER JOIN Libros ON Pedidos.id_libro = Libros.id_libro
+WHERE Clientes.correo = 'juan.perez@example.com';
+
+-- Calcular el total de ventas
+SELECT SUM(Libros.precio) AS Total_Ventas FROM Pedidos 
+INNER JOIN Libros ON Pedidos.id_libro = Libros.id_libro;
