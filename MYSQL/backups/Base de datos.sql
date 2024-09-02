@@ -26,9 +26,13 @@ CREATE TABLE `autores` (
   `apellido` varchar(100) NOT NULL,
   `nacionalidad` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_autor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `autores` */
+
+insert  into `autores`(`id_autor`,`nombre`,`apellido`,`nacionalidad`) values 
+(1,'Gabriel','García Márquez','Colombiana'),
+(2,'Jane','Austen','Británica');
 
 /*Table structure for table `clientes` */
 
@@ -41,9 +45,13 @@ CREATE TABLE `clientes` (
   `correo` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_cliente`),
   UNIQUE KEY `correo` (`correo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `clientes` */
+
+insert  into `clientes`(`id_cliente`,`nombre`,`apellido`,`correo`) values 
+(1,'Juan','Pérez','juan.perez@example.com'),
+(2,'María','Gómez','maria.gomez@example.com');
 
 /*Table structure for table `libros` */
 
@@ -58,9 +66,13 @@ CREATE TABLE `libros` (
   PRIMARY KEY (`id_libro`),
   KEY `id_autor` (`id_autor`),
   CONSTRAINT `libros_ibfk_1` FOREIGN KEY (`id_autor`) REFERENCES `autores` (`id_autor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `libros` */
+
+insert  into `libros`(`id_libro`,`titulo`,`genero`,`precio`,`id_autor`) values 
+(1,'Cien años de soledad','Realismo Mágico',19.99,1),
+(2,'Orgullo y Prejuicio','Romance',14.99,2);
 
 /*Table structure for table `pedidos` */
 
@@ -76,9 +88,13 @@ CREATE TABLE `pedidos` (
   KEY `id_libro` (`id_libro`),
   CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`),
   CONSTRAINT `pedidos_ibfk_2` FOREIGN KEY (`id_libro`) REFERENCES `libros` (`id_libro`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `pedidos` */
+
+insert  into `pedidos`(`id_pedido`,`id_cliente`,`id_libro`,`fecha_pedido`) values 
+(1,1,1,'2024-08-29'),
+(2,2,2,'2024-08-29');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
