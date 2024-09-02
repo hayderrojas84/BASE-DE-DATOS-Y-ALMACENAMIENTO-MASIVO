@@ -1,0 +1,11 @@
+*Función CONCAT: Combina dos o más cadenas:
+
+    (SELECT CONCAT(nombre, ' ', apellido) AS Nombre_Completo FROM Autores;)
+
+*Operador de Comparación: Para seleccionar libros con precios mayores a un valor específico:
+
+    (SELECT * FROM Libros WHERE precio > 15;)
+
+*Función COUNT: Para contar el número de libros por género:
+
+    (SELECT genero, COUNT(*) AS Numero_Libros FROM Libros GROUP BY genero;)
