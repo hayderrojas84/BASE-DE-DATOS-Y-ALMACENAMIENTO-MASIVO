@@ -1,0 +1,15 @@
+-- Insertar datos en Autores
+INSERT INTO Autores (nombre, apellido, nacionalidad) VALUES ('Gabriel', 'García Márquez', 'Colombiana');
+INSERT INTO Autores (nombre, apellido, nacionalidad) VALUES ('Jane', 'Austen', 'Británica');
+
+-- Insertar datos en Libros
+INSERT INTO Libros (titulo, genero, precio, id_autor) VALUES ('Cien años de soledad', 'Realismo Mágico', 19.99, 1);
+INSERT INTO Libros (titulo, genero, precio, id_autor) VALUES ('Orgullo y Prejuicio', 'Romance', 14.99, 2);
+
+-- Insertar datos en Clientes
+INSERT INTO Clientes (nombre, apellido, correo) VALUES ('Juan', 'Pérez', 'juan.perez@example.com');
+INSERT INTO Clientes (nombre, apellido, correo) VALUES ('María', 'Gómez', 'maria.gomez@example.com');
+
+-- Insertar datos en Pedidos
+INSERT INTO Pedidos (id_cliente, id_libro, fecha_pedido) VALUES (1, 1, '2024-08-29');
+INSERT INTO Pedidos (id_cliente, id_libro, fecha_pedido) VALUES (2, 2, '2024-08-29');
