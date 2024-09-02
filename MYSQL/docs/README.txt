@@ -39,7 +39,7 @@ Para utilizar esta base de datos en tu entorno local, sigue los siguientes pasos
 
 1. Clona este repositorio:
     ```bash
-    git clone https://github.com/tuusuario/libreria-db.git
+    git clone https://github.com/hayderrojas84/BASE-DE-DATOS-Y-ALMACENAMIENTO-MASIVO.git
     ```
 
 2. Navega al directorio del proyecto:
