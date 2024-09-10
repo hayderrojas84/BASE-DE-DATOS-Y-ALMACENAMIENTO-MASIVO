@@ -5,24 +5,24 @@
    db.Productos.find({ "precio": { "$gt": 1000 } }).pretty()
 
 3. Obtener facturas de un cliente en particular (cliente_id = 1):
-   db.factura.find({ "cliente_id": 1 }).pretty()
+   db.Factura.find({ "cliente_id": 1 }).pretty()
 
 4. Buscar clientes cuyo nombre sea "María Gómez"
-   db.cliente.find({ "nombre": "María Gómez" }).pretty()
+   db.Clientes.find({ "nombre": "María Gómez" }).pretty()
 
 5. Actualizar el número de teléfono de un cliente
-   db.cliente.updateOne(
+   db.Clientes.updateOne(
   { "nombre": "Juan Pérez" },
   { "$set": { "telefono": "3007654321" } }
   )
 6. Eliminar un producto por su ID
-   db.producto.deleteOne({ "_id": 2 })
+   db.Productos.deleteOne({ "_id": 2 })
 
 7. Buscar facturas de un cliente específico
-   db.factura.find({ "cliente_id": 1 }).pretty()
+   db.Factura.find({ "cliente_id": 1 }).pretty()
 
 8. Insertar un nuevo producto en la colección producto
-   db.producto.insertOne({
+   db.Productos.insertOne({
   "_id": 3,
   "nombre": "Aire Acondicionado 12,000 BTU",
   "marca": "Panasonic",
@@ -31,10 +31,10 @@
   })
 
 9. Buscar proveedores que distribuyan un producto específico
-   db.proveedores.find({ "productos": 1 }).pretty()
+   db.Proveedores.find({ "productos": 1 }).pretty()
 
 10. Incrementar el stock de un producto
-   db.producto.updateOne(
+   db.Productos.updateOne(
   { "_id": 1 },
   { "$inc": { "stock": 5 } }
   )
