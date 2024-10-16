@@ -1,0 +1,86 @@
+1. Crear la base de datos Plataforma_Streaming:
+
+   use Plataforma_Streaming;
+
+2. Crear la coleccion de Usuarios e insertar datos:
+
+   db.Usuarios.insertMany([
+    { _id: 1, name: "Carlos", email: "carlos@example.com" },
+    { _id: 2, name: "Maria", email: "maria@example.com" }
+   ]);
+
+3. Crear la coleccion Suscripciones e insertar datos:
+
+   db.Suscripciones.insertMany([
+    { _id: 1, tipo: "Premium", usuario_id: 1 },
+    { _id: 2, tipo: "Básica", usuario_id: 2 }
+  ]);
+
+4. Crear la coleccion Peliculas e insertar datos:
+
+   db.Peliculas.insertMany([
+     { _id: 1, titulo: "Inception", duracion: 148 },
+     { _id: 2, titulo: "Matrix", duracion: 136 },
+     { _id: 3, titulo: "Interstellar", duracion: 169 }
+   ]);
+
+5. Crear la coleccion Generos e insertar datos:
+
+   db.Generos.insertMany([
+     { _id: 1, nombre: "Ciencia Ficción" },
+     { _id: 2, nombre: "Acción" },
+     { _id: 3, nombre: "Drama" }
+   ]);
+
+6. Crear la coleccion ListaReproduccion e insertar datos:
+
+   db.ListasReproduccion.insertMany([
+     { _id: 1, nombre: "Favoritas de Carlos", usuario_id: 1, peliculas: [1, 2] },
+     { _id: 2, nombre: "Favoritas de Maria", usuario_id: 2, peliculas: [3] }
+   ]);
+
+
+7. Actualizar la suscripción de un usuario con updateOne() y coincidencias puntuales(Relacion 1 a 1):
+
+   db.Suscripciones.updateOne(
+     { usuario_id: 1 }, // Coincidencia puntual con el usuario
+     { $set: { tipo: "Ultra Premium" } } // Actualiza la suscripción del usuario Carlos
+   );
+
+8.  Agregar una nueva lista de reproducción a un usuario usando updateOne() con upsert(Relacion de 1 a muchos):
+
+   db.ListasReproduccion.updateOne(
+     { _id: 3 }, // Intentamos actualizar una lista de reproducción inexistente
+     { 
+       $setOnInsert: { nombre: "Ciencia Ficción Favoritas", usuario_id: 1, peliculas: [1, 3] } 
+     }, 
+     { upsert: true } // Inserta si no existe
+   );
+
+9. Agregar géneros a una película usando $each(Relacion de muchos a muchos):
+
+    db.Peliculas.updateOne(
+      { _id: 1 }, // Coincidencia con la película Inception
+      { 
+        $addToSet: { generos: { $each: [1, 3] } } // Añadir géneros Ciencia Ficción y Drama
+      }
+     );
+
+10. Obtener todas las películas con sus géneros:
+
+   db.Peliculas.aggregate([
+     {
+       $lookup: {
+         from: "Generos",
+         localField: "generos",
+         foreignField: "_id",
+         as: "detalles_generos"
+       }
+     }
+   ]);
+
+
+
+
+
+
